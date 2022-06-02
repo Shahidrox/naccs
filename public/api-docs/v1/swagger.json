@@ -1,0 +1,240 @@
+{
+    "swagger": "2.0",
+    "host": "localhost:3000",
+    "basePath": "/api/v1",
+    "tags": [
+      {
+        "name": "Test",
+        "description": "Vessel",
+        "externalDocs": {
+          "description": "Vessel",
+          "url": "localhost:3000"
+        }
+      }
+    ],
+    "schemes": [
+      "http"
+    ],
+    "paths": {
+      "/vessels": {
+        "post": {
+          "tags": [
+            "Vessel"
+          ],
+          "summary": "Create new vessel",
+          "produces": [
+            "application/json"
+          ],
+          "parameters": [
+            {
+              "name": "vessel[name]",
+              "in": "query",
+              "type": "string"
+            },
+            {
+              "name": "vessel[company_id]",
+              "in": "query",
+              "type": "string"
+            },
+            {
+              "name": "vessel[naccs_code]",
+              "in": "query",
+              "type": "string"
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "successful operation",
+              "schema": {
+                "type": "string"
+              }
+            },
+            "400": {"description": "Bad Request"},
+            "404": {"description": "Not Found"},
+            "500": {"description": "Internal Server Error"}
+          }
+        },
+        "get": {
+          "tags": [
+            "Vessel"
+          ],
+          "summary": "Get list of vessel",
+          "produces": [
+            "application/json"
+          ],
+          "parameters": [
+            {
+              "in": "query",
+              "name": "page"
+            }
+          ],
+          "responses": {
+            "200": {
+              "schema": {
+                "description": "successful operation",
+                "type": "object",
+                "properties": {
+                  "name": {"type": "string"},
+                  "company_id": {"type": "string"},
+                  "naccs_code":{"type": "string"},
+                  "created_at":{"type": "date-time"},
+                  "updated_at":{"type": "date-time"}
+                }
+              }
+            },
+            "500": {"description": "Internal server error"}
+          }
+        }
+      },
+      "/vessels/{id}": {
+        "get": {
+          "tags": [
+            "Vessel"
+          ],
+          "summary": "vessel details",
+          "produces": [
+            "application/json"
+          ],
+          "parameters": [
+            {
+              "name": "id",
+              "in": "path",
+              "type": "integer"
+            }
+          ],
+          "responses": {
+            "200": {
+              "schema": {
+                "description": "successful operation",
+                "type": "object",
+                "properties": {
+                  "name": {"type": "string"},
+                  "company_id": {"type": "string"},
+                  "naccs_code":{"type": "string"},
+                  "created_at":{"type": "date-time"},
+                  "updated_at":{"type": "date-time"}
+                }
+              }
+            },
+            "400": {"description": "Bad Request"},
+            "404": {"description": "Not Found"},
+            "500": {"description": "Internal Server Error"}
+          }
+        },
+        "patch": {
+          "tags": [
+            "Vessel"
+          ],
+          "summary": "Update vessel",
+          "produces": [
+            "application/json"
+          ],
+          "parameters": [
+            {
+              "name": "id",
+              "in": "path",
+              "type": "integer"
+            },
+            {
+              "name": "vessel[name]",
+              "in": "query",
+              "type": "string"
+            },
+            {
+              "name": "vessel[company_id]",
+              "in": "query",
+              "type": "string"
+            },
+            {
+              "name": "vessel[naccs_code]",
+              "in": "query",
+              "type": "string"
+            }
+          ],
+          "responses": {
+            "200": {
+              "schema": {
+                "description": "successful operation",
+                "type": "object",
+                "properties": {
+                  "name": {"type": "string"},
+                  "company_id": {"type": "string"},
+                  "naccs_code":{"type": "string"},
+                  "created_at":{"type": "date-time"},
+                  "updated_at":{"type": "date-time"}
+                }
+              }
+            },
+            "400": {"description": "Bad Request"},
+            "404": {"description": "Not Found"},
+            "500": {"description": "Internal Server Error"}
+          }
+        },
+        "delete": {
+          "tags": [
+            "Vessel"
+          ],
+          "summary": "DELETE vessel",
+          "produces": [
+            "application/json"
+          ],
+          "parameters": [
+            {
+              "name": "id",
+              "in": "path",
+              "type": "integer"
+            }
+          ],
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "type": "string"
+            }
+          },
+          "400": {"description": "Bad Request"},
+          "404": {"description": "Not Found"},
+          "500": {"description": "Internal Server Error"}
+        }
+      }
+    },
+    "definitions": {
+      "Vessel": {
+        "type": "object",
+        "properties": {       
+          "name":{
+            "type": "string"
+          },
+          "company_id":{
+            "type": "string"
+          },
+          "naccs_code":{
+            "type": "string"
+          },
+          "created_at":{
+            "type": "datetime"
+          },
+          "updated_at":{
+            "type": "datetime"
+          }
+        },
+        "xml": {
+          "name": "Articles"
+        }
+      },
+      "ApiResponse": {
+        "type": "object",
+        "properties": {
+          "code": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "type": {
+            "type": "string"
+          },
+          "message": {
+            "type": "string"
+          }
+        }
+      }
+    }
+  }
